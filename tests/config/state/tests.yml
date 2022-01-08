@@ -26,3 +26,6 @@ components:
   - component: cassandra
     allOperations: false
     operations: [ "set", "get", "delete", "bulkset", "bulkdelete" ]
+  - component: plugin
+    allOperations: false
+    operations: [ "set", "get", "delete" ]

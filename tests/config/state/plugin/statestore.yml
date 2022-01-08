@@ -1,0 +1,18 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: statestore
+spec:
+  type: state.plugin
+  version: v1
+  metadata:
+  - name: plugin.basedir
+    value: ./plugins
+  - name: plugin.version
+    value: 0.0.1
+  - name: plugin.name
+    value: go-memory
+  - name: plugin.runner
+    value: exec
+  - name: message
+    value: hello

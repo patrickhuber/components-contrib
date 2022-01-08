@@ -66,6 +66,7 @@ import (
 	s_cassandra "github.com/dapr/components-contrib/state/cassandra"
 	s_mongodb "github.com/dapr/components-contrib/state/mongodb"
 	s_mysql "github.com/dapr/components-contrib/state/mysql"
+	s_plugin "github.com/dapr/components-contrib/state/plugin"
 	s_postgresql "github.com/dapr/components-contrib/state/postgresql"
 	s_redis "github.com/dapr/components-contrib/state/redis"
 	s_sqlserver "github.com/dapr/components-contrib/state/sqlserver"
@@ -420,6 +421,8 @@ func loadStateStore(tc TestComponent) state.Store {
 		store = s_azuretablestorage.NewAzureTablesStateStore(testLogger)
 	case "cassandra":
 		store = s_cassandra.NewCassandraStateStore(testLogger)
+	case "plugin":
+		store = s_plugin.NewPluginStateStore(testLogger)
 	default:
 		return nil
 	}

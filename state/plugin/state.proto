@@ -1,0 +1,61 @@
+/* protobuf specification https://developers.google.com/protocol-buffers/docs/proto3
+*/
+syntax = "proto3";
+package proto;
+
+option go_package = "github.com/dapr/components-contrib/state/plugin;plugin";
+
+message Metadata {
+    map<string, string> properties = 1;
+}
+
+message GetRequest {
+    string key = 1;
+    map<string,string> metadata = 2;
+    GetStateOption options = 3;
+}
+
+message GetStateOption {
+    string consistency = 1;
+}
+
+message GetResponse {
+    bytes data = 1;
+    string etag = 2;
+    map<string,string> metadata = 3; 
+}
+
+message SetRequest {
+    string key = 1;
+    bytes value = 2;
+    string etag = 3;
+    map<string,string>  metadata = 4;
+    SetStateOption options = 5;
+}
+
+message SetStateOption {
+    string concurrency = 1;
+    string consistency = 2;
+}
+
+message Empty {}
+
+message DeleteRequest{
+    string key = 1;
+    string etag = 2;
+    map<string,string>  metadata = 3;    
+    DeleteStateOption options = 4;
+}
+
+message DeleteStateOption{
+    string concurrency = 1;
+    string consistency = 2;    
+}
+
+service State {
+    rpc Init(Metadata) returns (Empty);
+    rpc Get(GetRequest) returns (GetResponse);
+    rpc Set(SetRequest) returns (Empty);
+    rpc Delete(DeleteRequest) returns (Empty);
+    rpc Ping(Empty) returns (Empty);
+}
