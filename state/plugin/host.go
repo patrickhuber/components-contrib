@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/dapr/components-contrib/state"
+	"github.com/dapr/components-contrib/state/plugin/shared"
 	"github.com/dapr/kit/logger"
 	"github.com/hashicorp/go-plugin"
 )
@@ -56,7 +57,7 @@ func (h *Host) Init(metadata state.Metadata) error {
 	}
 
 	// request the plugin
-	raw, err := rpcClient.Dispense(ProtocolGRPC)
+	raw, err := rpcClient.Dispense(shared.ProtocolGRPC)
 	if err != nil {
 		return err
 	}
@@ -74,14 +75,13 @@ func (h *Host) Init(metadata state.Metadata) error {
 
 func (h *Host) createClient(cmd *exec.Cmd) *plugin.Client {
 	return plugin.NewClient(&plugin.ClientConfig{
-		HandshakeConfig: Handshake,
-		Plugins:         PluginMap,
+		HandshakeConfig: shared.Handshake,
+		Plugins:         shared.PluginMap,
 		Cmd:             cmd,
 		AllowedProtocols: []plugin.Protocol{
 			plugin.ProtocolNetRPC,
 			plugin.ProtocolGRPC,
 		},
-		Logger: LogAdapter(h.logger),
 	})
 }
 

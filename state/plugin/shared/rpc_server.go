@@ -1,4 +1,4 @@
-package plugin
+package shared
 
 import "github.com/dapr/components-contrib/state"
 
@@ -20,15 +20,6 @@ func (s *RPCServer) Features(req *interface{}, features *[]state.Feature) error 
 
 func (s *RPCServer) Delete(req *state.DeleteRequest, resp *interface{}) error {
 	return s.Impl.Delete(req)
-}
-
-func (s *RPCServer) Get(req *state.GetRequest, resp *state.GetResponse) error {
-	response, err := s.Impl.Get(req)
-	if err != nil {
-		return err
-	}
-	*resp = *response
-	return nil
 }
 
 func (s *RPCServer) Set(req *state.SetRequest, resp *interface{}) error {

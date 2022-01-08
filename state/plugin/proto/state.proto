@@ -3,7 +3,7 @@
 syntax = "proto3";
 package proto;
 
-option go_package = "github.com/dapr/components-contrib/state/plugin;plugin";
+option go_package = "github.com/dapr/components-contrib/state/plugin/proto;proto";
 
 message Metadata {
     map<string, string> properties = 1;

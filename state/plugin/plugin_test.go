@@ -24,10 +24,13 @@ func TestGoPluginRun(t *testing.T) {
 		err := store.Init(metadata)
 		require.Nil(t, err)
 
+		key := "hello"
+		value := "world"
+
 		etag := ""
 		err = store.Set(&state.SetRequest{
-			Key:      "hello",
-			Value:    []byte("world"),
+			Key:      key,
+			Value:    []byte(value),
 			ETag:     &etag,
 			Metadata: map[string]string{},
 			Options:  state.SetStateOption{},
@@ -35,10 +38,12 @@ func TestGoPluginRun(t *testing.T) {
 		require.Nil(t, err)
 
 		resp, err := store.Get(&state.GetRequest{
-			Key: "hello",
+			Key:      key,
+			Metadata: map[string]string{},
+			Options:  state.GetStateOption{},
 		})
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		require.Equal(t, "hello", string(resp.Data))
+		require.Equal(t, value, string(resp.Data))
 	})
 }

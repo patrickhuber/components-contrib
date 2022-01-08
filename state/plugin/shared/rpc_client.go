@@ -1,4 +1,4 @@
-package plugin
+package shared
 
 import (
 	"net/rpc"
@@ -43,15 +43,6 @@ func (s *RPCClient) Features() []state.Feature {
 func (s *RPCClient) Delete(req *state.DeleteRequest) error {
 	var resp interface{}
 	return s.client.Call(DeleteMethod, req, &resp)
-}
-
-func (s *RPCClient) Get(req *state.GetRequest) (*state.GetResponse, error) {
-	var resp state.GetResponse
-	err := s.client.Call(GetMethod, req, &resp)
-	if err != nil {
-		return nil, err
-	}
-	return &resp, nil
 }
 
 func (s *RPCClient) Set(req *state.SetRequest) error {
