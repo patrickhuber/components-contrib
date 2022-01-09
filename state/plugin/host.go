@@ -11,7 +11,7 @@ import (
 	"github.com/hashicorp/go-plugin"
 )
 
-// NewSQLServerStateStore creates a new instance of a Sql Server transaction store.
+// NewPluginStateStore creates a new instance of a Sql Server transaction store.
 func NewPluginStateStore(logger logger.Logger) state.Store {
 	return &Host{
 		logger: logger,
