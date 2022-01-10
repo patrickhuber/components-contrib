@@ -102,7 +102,7 @@ func (s *Store) Log(message string, args ...interface{}) {
 }
 
 func (s *Store) Error(message string, args ...interface{}) error {
-	err := fmt.Errorf(message, args)
+	err := fmt.Errorf(message, args...)
 	if s.logger == nil {
 		return err
 	}

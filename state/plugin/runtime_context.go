@@ -85,7 +85,7 @@ func NewPython() RuntimeContext {
 	return &runtimeContext{
 		name:       RuntimePython,
 		extension:  ".py",
-		executable: "python",
+		executable: "python3",
 		args:       []string{},
 	}
 }
