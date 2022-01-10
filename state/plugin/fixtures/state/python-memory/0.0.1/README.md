@@ -7,13 +7,13 @@ Full documentation for installation can be found here: https://grpc.io/docs/lang
 ### install pip 
 
 ```bash
-$ sudo apt-get install python3-pip -y
+sudo apt-get install python3-pip -y
 ```
 
 ### install dependencies
 
 ```bash
-$ pip3 install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ** grpcio-tools is only required for code generation
@@ -21,6 +21,6 @@ $ pip3 install -r requirements.txt
 ## generate
 
 ```bash
-$ export COMPONENT_FOLDER=`realpath ../../../..`
-$ python3 -m grpc_tools.protoc -I $COMPONENT_FOLDER --python_out=. --grpc_python_out=. $COMPONENTS_FOLDER/proto/state.proto
+export COMPONENT_FOLDER=`realpath ../../../..`
+python3 -m grpc_tools.protoc -I $COMPONENT_FOLDER --python_out=. --grpc_python_out=. $COMPONENTS_FOLDER/proto/state.proto
 ```
