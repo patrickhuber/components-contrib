@@ -30,6 +30,13 @@ func TestPluginRuns(t *testing.T) {
 				plugin.MetadataVersion:       "0.0.1",
 			},
 		},
+		{
+			Properties: map[string]string{
+				plugin.MetadataName:          "node-memory",
+				plugin.MetadataBaseDirectory: path.Join(".", "fixtures"),
+				plugin.MetadataRunner:        string(plugin.RuntimeNode),
+				plugin.MetadataVersion:       "0.0.1"},
+		},
 	}
 	for _, metadata := range metadataSet {
 		testName := fmt.Sprintf("can roundtrip %s", metadata.Properties[plugin.MetadataRunner])

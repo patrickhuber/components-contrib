@@ -12,7 +12,7 @@ const (
 	RuntimeDefault Runtime = RuntimeExec
 	RuntimePython  Runtime = "python"
 	RuntimeDotnet  Runtime = "dotnet"
-	RuntimeNodeJS  Runtime = "nodejs"
+	RuntimeNode    Runtime = "node"
 	RuntimeExec    Runtime = "exec"
 	RuntimeJava    Runtime = "java"
 )
@@ -90,9 +90,9 @@ func NewPython() RuntimeContext {
 	}
 }
 
-func NewNodeJS() RuntimeContext {
+func NewNode() RuntimeContext {
 	return &runtimeContext{
-		name:       RuntimeNodeJS,
+		name:       RuntimeNode,
 		extension:  ".js",
 		executable: "node",
 		args:       []string{},
@@ -112,7 +112,7 @@ var runtimeContextMap = map[Runtime]RuntimeContext{
 	RuntimeDotnet: NewDotnet(),
 	RuntimeExec:   NewExec(),
 	RuntimeJava:   NewJava(),
-	RuntimeNodeJS: NewNodeJS(),
+	RuntimeNode:   NewNode(),
 	RuntimePython: NewPython(),
 }
 
